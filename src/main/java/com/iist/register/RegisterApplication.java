@@ -4,7 +4,6 @@ import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -33,7 +32,7 @@ public class RegisterApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("http://localhost:4200");
+						.allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("*");
 			}
 		};
 	}

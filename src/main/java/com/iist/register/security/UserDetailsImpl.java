@@ -1,7 +1,7 @@
 package com.iist.register.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.iist.register.entity.User;
+import com.iist.register.entity.Account;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,28 +33,20 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
 
-    public static UserDetailsImpl build(User user) {
+    public static UserDetailsImpl build(Account account) {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         return new UserDetailsImpl(
-                user.getId(),
-                user.getUsername(),
+                account.getId(),
+                account.getUsername(),
                 null,
-                user.getPassword(),
+                account.getPassword(),
                 authorities);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     @Override

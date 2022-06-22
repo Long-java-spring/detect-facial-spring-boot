@@ -2,7 +2,7 @@ package com.iist.register.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UserDTO {
+public class AccountDTO {
     @JsonProperty
     private long userId;
 
@@ -18,7 +18,16 @@ public class UserDTO {
     @JsonProperty
     private String address;
 
-    public UserDTO() {
+    @JsonProperty
+    private String organizationName;
+
+    @JsonProperty
+    private Integer inLateThreshold;
+
+    @JsonProperty
+    private Integer outEarlyThreshold;
+
+    public AccountDTO() {
     }
 
     public long getUserId() {
@@ -67,5 +76,29 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
+    }
+
+    public Integer getInLateThreshold() {
+        return inLateThreshold;
+    }
+
+    public void setInLateThreshold(Integer inLateThreshold) {
+        this.inLateThreshold = inLateThreshold;
+    }
+
+    public Integer getOutEarlyThreshold() {
+        return outEarlyThreshold;
+    }
+
+    public void setOutEarlyThreshold(Integer outEarlyThreshold) {
+        this.outEarlyThreshold = outEarlyThreshold;
     }
 }

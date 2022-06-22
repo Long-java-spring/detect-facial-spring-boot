@@ -1,40 +1,44 @@
 package com.iist.register.entity;
 
-import com.iist.register.dto.UserDTO;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.iist.register.dto.AccountDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import sun.security.util.Password;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "accounts")
+public class Account {
     @Id
     @Column(name="Id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "password")
+    private String password;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "address")
     private String address;
+    @Column(name = "organization_name")
+    private String organizationName;
+    @Column(name = "in_late_threshold")
+    private Integer inLateThreshold;
+    @Column(name = "out_early_threshold")
+    private Integer outEarlyThreshold;
 
-    @Column(name = "username")
-    private String username;
-    @Column(name = "password")
-    private String password;
-
-    public User() {
+    public Account() {
     }
 
-    public User(UserDTO userDTO) {
+    public Account(AccountDTO userDTO) {
         this.username = userDTO.getUsername();
         this.password = new BCryptPasswordEncoder().encode(userDTO.getPassword());
         this.firstName = userDTO.getFirstName();
         this.lastName = userDTO.getLastName();
         this.address = userDTO.getAddress();
+        this.organizationName = "";
     }
 
     public Long getId() {
@@ -87,5 +91,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
+    }
+
+    public Integer getInLateThreshold() {
+        return inLateThreshold;
+    }
+
+    public void setInLateThreshold(Integer inLateThreshold) {
+        this.inLateThreshold = inLateThreshold;
+    }
+
+    public Integer getOutEarlyThreshold() {
+        return outEarlyThreshold;
+    }
+
+    public void setOutEarlyThreshold(Integer outEarlyThreshold) {
+        this.outEarlyThreshold = outEarlyThreshold;
     }
 }
