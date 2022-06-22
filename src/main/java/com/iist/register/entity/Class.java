@@ -1,5 +1,7 @@
 package com.iist.register.entity;
 
+import com.iist.register.dto.ClassDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,12 @@ public class Class {
     private Long accountId;
 
     public Class() {
+    }
+
+    public Class(ClassDTO dto) {
+        className = dto.getClassName();
+        totalStudents = dto.getTotalStudents();
+        accountId = dto.getAccountId();
     }
 
     public Long getId() {
