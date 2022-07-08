@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.RestClientException;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Account not exist")
-public class AccountNotFoundException extends RestClientException {
-    public AccountNotFoundException(Long accountId) {
-        super(String.format("Account not exist with id is %s", accountId));
+public class EntityNotFoundException extends RestClientException {
+    public EntityNotFoundException(String entityName, Long accountId) {
+        super(String.format("%s not exist with id is %s", entityName, accountId));
     }
 }

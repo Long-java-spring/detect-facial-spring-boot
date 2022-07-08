@@ -3,7 +3,7 @@ package com.iist.register.service;
 import com.iist.register.dto.ClassDTO;
 import com.iist.register.entity.Account;
 import com.iist.register.entity.Class;
-import com.iist.register.exception.AccountNotFoundException;
+import com.iist.register.exception.EntityNotFoundException;
 import com.iist.register.repository.AccountRepository;
 import com.iist.register.repository.ClassRepository;
 import com.iist.register.security.AuthTokenFilter;
@@ -28,7 +28,7 @@ public class ClassService {
     public void create(ClassDTO classDTO) {
         Optional<Account> accountOptional = accountRepository.findById(classDTO.getAccountId());
         if (!accountOptional.isPresent()) {
-            throw new AccountNotFoundException(classDTO.getAccountId());
+            throw new EntityNotFoundException("Account", classDTO.getAccountId());
         }
         try {
             classRepository.save(new Class(classDTO));
