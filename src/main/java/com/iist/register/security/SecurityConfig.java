@@ -32,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/accounts/register").permitAll()
-                .antMatchers("/authenticate").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/facial-recognitions/setup/get-image/**").permitAll()
+                .antMatchers("/facial-recognitions/verify/get-image/**").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
