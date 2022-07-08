@@ -6,6 +6,11 @@ public class FacialSetupDTO {
     private Long userId;
     private List<String> images;
 
+    public FacialSetupDTO(Long userId, List<String> images) {
+        this.userId = userId;
+        this.images = images;
+    }
+
     public Long getUserId() {
         return userId;
     }
